@@ -8,9 +8,9 @@
 - [x] Git workflow and commit standards
 
 ## Phase 2: Core Features (Weeks 4-6)
-- [ ] Expense CRUD operations
+- [x] Expense CRUD operations
 - [ ] Category management system
-- [ ] Form validation and error handling
+- [x] Form validation and error handling
 - [ ] Local storage for data persistence
 - [ ] Basic analytics dashboard
 
