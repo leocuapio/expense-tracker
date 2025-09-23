@@ -1,20 +1,16 @@
 // src/components/ExpenseList/ExpenseList.tsx
 import React, { useState } from 'react';
 import ExpenseCard from '../ExpenseCard/ExpenseCard';
-import type { ExpenseCardProps } from '../ExpenseCard/ExpenseCard';
+import type { ExpenseCardProps, ExpenseCategory } from '../ExpenseCard/ExpenseCard';
 import './ExpenseList.css';
 
 // Type for expense data (reusing interface from ExpenseCard)
 type Expense = ExpenseCardProps;
+type FilterOption = 'All' | ExpenseCategory;
 
-/**
- * Props interface for ExpenseList component
- * FIXED: expenses is now required (not optional initialExpenses)
- * @interface ExpenseListProps
- * @property {Expense[]} expenses - Current expense data from parent component (App.tsx)
- */
 interface ExpenseListProps {
   expenses: Expense[];  // FIXED: Required prop, receives current state from App
+  onDeleteExpense?: (id: number) => void;
 }
 
 /**
@@ -32,10 +28,12 @@ interface ExpenseListProps {
  * @param {ExpenseListProps} props - Component props
  * @returns {JSX.Element} Rendered expense list with filtering controls
  */
-const ExpenseList: React.FC<ExpenseListProps> = ({ expenses }) => {
-  
-  // ONLY manage UI state (filtering) - NOT expense data
-  const [filterCategory, setFilterCategory] = useState<string>('All');
+const ExpenseList: React.FC<ExpenseListProps> = ({ 
+  expenses, 
+  onDeleteExpense     
+}) => {
+// UPDATED
+  const [filterCategory, setFilterCategory] = useState<FilterOption>('All');
 
   // Filter expenses from props (not local state)
   const filteredExpenses = filterCategory === 'All' 
@@ -53,7 +51,7 @@ const ExpenseList: React.FC<ExpenseListProps> = ({ expenses }) => {
    * @param {React.ChangeEvent<HTMLSelectElement>} event - Select change event
    */
   const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setFilterCategory(event.target.value);
+    setFilterCategory(event.target.value as FilterOption);
   };
 
   return (
@@ -91,10 +89,13 @@ const ExpenseList: React.FC<ExpenseListProps> = ({ expenses }) => {
             No expenses found. Add some expenses to get started!
           </p>
         ) : (
-          filteredExpenses.map(expense => (
+           filteredExpenses.map(expense => (
             <ExpenseCard
               key={expense.id}
               {...expense}
+              onDelete={onDeleteExpense}
+              // OPTIONAL:
+              // highlighted={expense.amount > 50}
             />
           ))
         )}
