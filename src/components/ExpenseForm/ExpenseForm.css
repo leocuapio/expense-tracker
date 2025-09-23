@@ -116,11 +116,13 @@
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
 
-.form-error {
+/* UPDATED */
+.error, .form-error {
   color: #EF4444;
   font-size: 12px;
   margin-top: 4px;
 }
+
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {

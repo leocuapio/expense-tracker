@@ -9,6 +9,11 @@
   border-left: 4px solid #4F46E5;
 }
 
+.expense-card--highlighted {
+  border-left-color: #f59e0b;
+  background: #fffbeb;
+}
+
 .expense-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -48,4 +53,18 @@
   font-size: 18px;
   font-weight: bold;
   color: #059669;
+}
+
+.highlighted-card {
+  background-color: lightyellow;
+  display: None;
+}
+
+.expense-delete {
+  transition: all 0.2s;
+}
+
+.expense-delete:hover {
+  background: #dc2626 !important;
+  transform: scale(1.1);
 }
