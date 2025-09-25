@@ -116,6 +116,8 @@ const ExpenseCard: React.FC<ExpenseCardProps> = ({
       
       </div>
     </article>
+
+    
   );
 };
 
