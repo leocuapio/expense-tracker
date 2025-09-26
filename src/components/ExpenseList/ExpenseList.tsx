@@ -55,18 +55,18 @@ const ExpenseList: React.FC<ExpenseListProps> = ({
   };
 
   return (
-    <div className="expense-list">
-      <div className="expense-controls">
-        <h2>Your Expenses</h2>
+    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-5 md:p-6 md:mb-8">
+      <div className="expense-controls"> 
+        <h2 className ="text-2xl font-bold text-gray-900 mb-6">Your Expenses</h2>
         
         <div className="filter-controls">
-          <label style={{ color: "black" }} htmlFor="category-filter">Filter by category:</label>
+          <label style={{ color: "black" }} htmlFor="category-filter" className ="pr-4">Filter by category:</label>
 
           <select 
             id="category-filter"
             value={filterCategory}
             onChange={handleCategoryChange}
-            className="category-select"
+            className="px-3 py-2 border border-gray-300 rounded-md text-sm bg-white text-gray-700 cursor-pointer transition-colors duration-200 hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-full max-w-48"
           >
             <option value="All">All Categories</option>
             <option value="Food">Food</option>
@@ -77,15 +77,15 @@ const ExpenseList: React.FC<ExpenseListProps> = ({
         </div>
       </div>
 
-      <div className="expense-summary">
+      <div className="flex justify-between items-center mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200 flex-col md:flex-row gap-4 text-center md:text-left">
         <p style={{ color: "black" }}>
           Total: ${filteredTotal.toFixed(2)} ({filteredExpenses.length} expenses)
         </p>
       </div>
 
-      <div className="expense-items">
+      <div className ="text-gray-500 py-10 px-5">
         {filteredExpenses.length === 0 ? (
-          <p className="no-expenses">
+          <p className="text-base m-0">
             No expenses found. Add some expenses to get started!
           </p>
         ) : (

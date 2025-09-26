@@ -1,6 +1,5 @@
 // src/components/ExpenseForm/ExpenseForm.tsx
 import React, { useState } from 'react';
-import './ExpenseForm.css';
 import type { ExpenseCategory } from '../ExpenseCard/ExpenseCard';
 
 interface FormErrors {
