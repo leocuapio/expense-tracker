@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
 import type { ExpenseCategory } from '../ExpenseCard/ExpenseCard';
-import './ExpenseForm.css';
 
 interface FormErrors {
   description?: string;
@@ -154,14 +153,14 @@ const validateExpenseForm = (
       category: 'Food',
       date: new Date().toISOString().split('T')[0]
     });
-  };
+ };
 
   return (
-    <form className="expense-form" onSubmit={handleSubmit}>
-      <h3>Add New Expense</h3>
-      
-      <div className="form-group">
-        <label htmlFor="description">Description *</label>
+    <form className="bg-white rounded-lg p-6 sm:p-4 xs:p-3 mb-8 shadow-sm border border-gray-200" onSubmit={handleSubmit}>
+      <h3 className='text-xl fond-bold text-gray-900 mb-5'>Add New Expense</h3>
+      <div className="mb-4">
+        <label className = "block text-sm font-medium text-gray-700 mb-1.5" htmlFor="description">Description *</label>
+       
         <input
           type="text"
           id="description"
@@ -169,13 +168,22 @@ const validateExpenseForm = (
           value={formData.description}
           onChange={handleInputChange}
           placeholder="What did you spend money on?"
-          required
+          className={`w-full px-3 py-2.5 rounded-md text-sm sm:text-base bg-white text-gray-700 
+            placeholder-gray-400
+            border transition-colors duration-200
+            focus:outline-none focus:ring-2
+            ${errors.description 
+              ? "border-red-500 focus:border-red-500 focus:ring-red-500 focus:ring-opacity-10" 
+              : "border-gray-300 hover:border-indigo-600 focus:border-indigo-600 focus:ring-indigo-600 focus:ring-opacity-10"}`}
+
         />
+
+
+        {errors.description && <span className="form-error">{errors.description}</span>}
       </div>
 
-      <div className="form-row">
-        <div className="form-group">
-          <label htmlFor="amount">Amount *</label>
+        <div className="mb-4">
+        <label className = "block text-sm font-medium text-gray-700 mb-1.5" htmlFor="amount">Amount *</label>
           <input
             type="number"
             id="amount"
@@ -185,40 +193,72 @@ const validateExpenseForm = (
             placeholder="0.00"
             step="0.01"
             min="0"
-            required
+            className={`w-full px-3 py-2.5 rounded-md text-sm sm:text-base bg-white text-gray-700 
+              placeholder-gray-400
+              border transition-colors duration-200
+              focus:outline-none focus:ring-2
+              ${errors.description 
+                ? "border-red-500 focus:border-red-500 focus:ring-red-500 focus:ring-opacity-10" 
+                : "border-gray-300 hover:border-indigo-600 focus:border-indigo-600 focus:ring-indigo-600 focus:ring-opacity-10"}`}
+  
           />
+
+          {errors.amount && <span className="text-red-500 text-xs mt-1">{errors.amount}</span>}
         </div>
 
-        <div className="form-group">
-          <label htmlFor="category">Category</label>
+        <div className="mb-4">
+        <label className = "block text-sm font-medium text-gray-700 mb-1.5" htmlFor="category">Category *</label>
           <select
             id="category"
             name="category"
             value={formData.category}
             onChange={handleInputChange}
+
+            className={`w-full px-3 py-2.5 rounded-md text-sm sm:text-base bg-white text-gray-700 
+              placeholder-gray-400
+              border transition-colors duration-200
+              focus:outline-none focus:ring-2
+              ${errors.description 
+                ? "border-red-500 focus:border-red-500 focus:ring-red-500 focus:ring-opacity-10" 
+                : "border-gray-300 hover:border-indigo-600 focus:border-indigo-600 focus:ring-indigo-600 focus:ring-opacity-10"}`}
+  
           >
             <option value="Food">Food</option>
             <option value="Transportation">Transportation</option>
             <option value="Entertainment">Entertainment</option>
-            <option value="Shopping">Shopping</option>
             <option value="Other">Other</option>
           </select>
-        </div>
-      </div>
 
-      <div className="form-group">
-        <label htmlFor="date">Date</label>
+          {errors.category && <span className="text-red-500 text-xs mt-1">{errors.category}</span>}
+        </div>
+
+      <div className="mb-4">
+      <label className = "block text-sm font-medium text-gray-700 mb-1.5" htmlFor="date">Date *</label>
         <input
           type="date"
           id="date"
           name="date"
           value={formData.date}
           onChange={handleInputChange}
-          required
+          className={`w-full px-3 py-2.5 rounded-md text-sm sm:text-base bg-white text-gray-700 
+            placeholder-gray-400
+            border transition-colors duration-200
+            focus:outline-none focus:ring-2
+            ${errors.description 
+              ? "border-red-500 focus:border-red-500 focus:ring-red-500 focus:ring-opacity-10" 
+              : "border-gray-300 hover:border-indigo-600 focus:border-indigo-600 focus:ring-indigo-600 focus:ring-opacity-10"}`}
+
         />
+
+        {errors.date && <span className="text-red-500 text-xs mt-1">{errors.date}</span>}
       </div>
 
-      <button type="submit" className="submit-button">
+      <button type="submit" className="px-4 py-2.5 min-w-[80px] rounded-md text-sm font-medium 
+             inline-flex items-center justify-center
+             border transition-all duration-200
+             bg-indigo-600 text-white border-indigo-600
+             hover:bg-indigo-700 hover:border-indigo-700 hover:-translate-y-0.5
+             disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
         Add Expense
       </button>
     </form>

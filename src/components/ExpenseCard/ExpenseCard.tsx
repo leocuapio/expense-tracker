@@ -1,6 +1,5 @@
 // src/components/ExpenseCard/ExpenseCard.tsx
 import React from 'react';
-import './ExpenseCard.css';
 
 /*
 TYPESCRIPT FEATURE INVENTORY:
