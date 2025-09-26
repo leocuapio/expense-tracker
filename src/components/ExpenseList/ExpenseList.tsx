@@ -2,8 +2,6 @@
 import React, { useState } from 'react';
 import ExpenseCard from '../ExpenseCard/ExpenseCard';
 import type { ExpenseCardProps, ExpenseCategory } from '../ExpenseCard/ExpenseCard';
-import './ExpenseList.css';
-
 // Type for expense data (reusing interface from ExpenseCard)
 type Expense = ExpenseCardProps;
 type FilterOption = 'All' | ExpenseCategory;
